@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Leruleng Mining Services | Contact Us — Get a Quote & Support</title>
+  <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0f1c;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* glassmorphism core */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+      border-color: rgba(255, 200, 50, 0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-hover-glow {
+      transition: all 0.25s ease;
+      border-radius: 40px;
+      padding: 12px 32px;
+      font-weight: 600;
+    }
+    .btn-hover-glow:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.02);
+    }
+
+    /* hero video + gradient overlay (white, blue, red, yellow, black) */
+    .contact-hero {
+      position: relative;
+      min-height: 55vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #heroBgVideo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      filter: brightness(0.55) contrast(1.05);
+    }
+    .hero-gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(255,255,245,0.2) 0%, 
+        rgba(0, 60, 120, 0.6) 35%,
+        rgba(200, 50, 40, 0.35) 65%,
+        rgba(255, 180, 20, 0.3) 85%,
+        rgba(0, 0, 0, 0.75) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-weight: 800;
+      background: linear-gradient(120deg, #fff, #7bb3ff, #ffc107);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .bg-dark-soft {
+      background: #0c1120;
+    }
+
+    .contact-info-item {
+      transition: all 0.2s;
+    }
+    .contact-info-item:hover {
+      transform: translateX(8px);
+    }
+
+    footer a {
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffc107 !important;
+    }
+
+    .form-control, .form-select {
+      background: rgba(20, 30, 45, 0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      border-radius: 20px;
+      padding: 12px 18px;
+      transition: all 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      background: rgba(30, 45, 65, 0.9);
+      border-color: #ffc107;
+      box-shadow: 0 0 0 0.2rem rgba(255,193,7,0.25);
+      color: white;
+    }
+    .form-control::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .map-placeholder {
+      background: linear-gradient(145deg, #1a2a3a, #0e1622);
+      border-radius: 28px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141c2c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f5b042;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar (glass style) -->
+<nav class="navbar navbar-expand-lg sticky-top py-3" style="background: rgba(8, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,215,0,0.2);">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-white" href="#">
+      <i class="fas fa-hard-hat text-warning me-2"></i>Leruleng Mining
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bg-light rounded"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+        <li class="nav-item"><a class="nav-link text-white-75" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white-75" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link text-white-75" href="#">Services</a></li>
+        <li class="nav-item"><a class="nav-link active text-warning fw-semibold" href="#">Contact</a></li>
+      </ul>
+      <a href="#" class="btn btn-outline-warning btn-sm rounded-pill ms-lg-3 px-4"><i class="fas fa-calculator me-1"></i>Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section with background video + gradient -->
+<section class="contact-hero">
+  <video autoplay muted loop playsinline id="heroBgVideo">
+    <source src="https://player.vimeo.com/external/434045863.sd.mp4?s=8c3cc5a7a5c1f0d2c5b8e5b8f3e7d9a3&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+  </video>
+  <div class="hero-gradient-overlay"></div>
+  <div class="hero-content">
+    <div class="glass-card p-4 p-md-5" style="background: rgba(8, 18, 30, 0.6); backdrop-filter: blur(14px);">
+      <span class="badge bg-warning text-dark mb-3 px-4 py-2 rounded-pill fs-6"><i class="fas fa-headset me-2"></i> 24/7 Support & Quotations</span>
+      <h1 class="display-4 fw-bold text-white">Get in <span class="text-warning">Touch</span></h1>
+      <p class="lead text-light-75 mt-3">Reach out for equipment hire inquiries, long-term contracts, or site assessments. Our team responds within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Contact Section: Form + Info + Map -->
+<section class="py-5 bg-dark-soft">
+  <div class="container py-4">
+    <div class="row g-5">
+      <!-- Contact Form Column -->
+      <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100">
+          <div class="mb-4">
+            <i class="fas fa-envelope-open-text fa-2x text-warning mb-2"></i>
+            <h3 class="text-white fw-bold">Request a Quote</h3>
+            <p class="text-light-50">Send us your earthmoving requirements — excavator, grader, TLB, or roller. We'll tailor a solution.</p>
+          </div>
+          <form id="contactForm" action="#" method="POST">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="fullName" placeholder="Full name *" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" id="email" placeholder="Email address *" required>
+              </div>
+              <div class="col-12">
+                <input type="tel" class="form-control" id="phone" placeholder="Phone number (e.g. 073 817 2730)">
+              </div>
+              <div class="col-12">
+                <select class="form-select" id="serviceInterest">
+                  <option selected disabled>Select equipment / service</option>
+                  <option>60-ton Excavator hire (with operator)</option>
+                  <option>20-ton Motor Grader hire</option>
+                  <option>TLB Backhoe Loader</option>
+                  <option>HQ-YL8000 Road Roller</option>
+                  <option>Full fleet package / long-term contract</option>
+                  <option>Site assessment & consultation</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <select class="form-select" id="hireDuration">
+                  <option selected disabled>Preferred hire period</option>
+                  <option>Hourly / Daily</option>
+                  <option>Weekly contract</option>
+                  <option>Monthly contract</option>
+                  <option>Long-term (3-12 months)</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <textarea class="form-control" id="message" rows="4" placeholder="Tell us about your project, site location, and timeline..."></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-warning btn-hover-glow w-100 py-3 fw-bold"><i class="fas fa-paper-plane me-2"></i> Send Inquiry →</button>
+              </div>
+              <div class="col-12 text-center">
+                <small class="text-light-50"><i class="fas fa-lock me-1"></i> Your data is secure. We respond within 24h.</small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info + Registered Office + Map Column -->
+      <div class="col-lg-6">
+        <div class="glass-card p-4 p-lg-5 h-100">
+          <div class="mb-4">
+            <i class="fas fa-address-card fa-2x text-warning mb-2"></i>
+            <h3 class="text-white fw-bold">Contact & Office</h3>
+            <p class="text-light-50">Visit our registered office or reach us directly for earthmoving support.</p>
+          </div>
+          
+          <div class="contact-info-item d-flex align-items-start gap-3 mb-4">
+            <i class="fas fa-phone-alt fs-4 text-warning mt-1"></i>
+            <div>
+              <h5 class="text-white mb-1">Phone / WhatsApp</h5>
+              <p class="text-light mb-0"><a href="tel:0738172730" class="text-decoration-none text-light fw-semibold">073 817 2730</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item d-flex align-items-start gap-3 mb-4">
+            <i class="fas fa-envelope fs-4 text-warning mt-1"></i>
+            <div>
+              <h5 class="text-white mb-1">Email</h5>
+              <p class="text-light mb-0"><a href="mailto:penicia.selolo@icloud.com" class="text-decoration-none text-light">penicia.selolo@icloud.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item d-flex align-items-start gap-3 mb-4">
+            <i class="fas fa-map-marker-alt fs-4 text-warning mt-1"></i>
+            <div>
+              <h5 class="text-white mb-1">Registered Office</h5>
+              <p class="text-light mb-0">236 Leruleng Village, Mapela<br>Mokopane, Limpopo, 0610<br>South Africa</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item d-flex align-items-start gap-3 mb-4">
+            <i class="fas fa-building fs-4 text-warning mt-1"></i>
+            <div>
+              <h5 class="text-white mb-1">Company Registration</h5>
+              <p class="text-light mb-0">Reg: 2025/878945/07 | Tax: 9204533286<br>Registration date: 12 November 2025</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2">
+            <div class="map-placeholder glass-card p-3 text-center">
+              <div>
+                <i class="fas fa-map-pin fa-2x text-warning mb-2"></i>
+                <p class="text-light mb-0"><strong>📍 Leruleng Village, Mapela, Mokopane</strong><br>Mining corridor, Limpopo province</p>
+                <small class="text-secondary">Exact location coordinates available upon request</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Business Hours & Additional Support Section -->
+<section class="py-5" style="background: #0f1622;">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+          <i class="fas fa-clock fs-2 text-warning mb-3"></i>
+          <h4 class="text-white">Business Hours</h4>
+          <ul class="list-unstyled text-light mt-3">
+            <li><strong>Monday – Friday:</strong> 07:00 – 17:00</li>
+            <li><strong>Saturday:</strong> 08:00 – 13:00 (emergency hire)</li>
+            <li><strong>Sunday:</strong> Closed (on-call for mines)</li>
+          </ul>
+          <small class="text-secondary"><i class="fas fa-hard-hat"></i> 24/7 site support available for long-term contracts</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+          <i class="fas fa-handshake fs-2 text-warning mb-3"></i>
+          <h4 class="text-white">Quick Response</h4>
+          <p class="text-light">Our team aims to answer all quote requests and technical questions within 4 business hours.</p>
+          <div class="mt-2"><span class="badge bg-warning text-dark">Equipment hire</span> <span class="badge bg-secondary">Site visit</span></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+          <i class="fas fa-shield-alt fs-2 text-warning mb-3"></i>
+          <h4 class="text-white">SHEQ & Compliance</h4>
+          <p class="text-light">Fully compliant with Valterra Mogalakwena mine standards. All operators certified and insured.</p>
+          <a href="#" class="btn btn-sm btn-outline-warning rounded-pill mt-2 px-4">Download compliance certs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social & Economic Impact Note + CTA -->
+<section class="py-4 bg-dark-soft">
+  <div class="container">
+    <div class="glass-card p-4 p-md-5 text-center">
+      <div class="row align-items-center">
+        <div class="col-md-8 text-md-start mb-3 mb-md-0">
+          <i class="fas fa-chart-line text-warning me-2"></i>
+          <span class="text-white fw-semibold">Local impact: </span>
+          <span class="text-light">Creating skilled employment & developing earthmoving operator capacity in Leruleng Village and surrounding communities.</span>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <a href="#" class="btn btn-warning btn-hover-glow px-4"><i class="fas fa-phone-alt me-2"></i>Call now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="pt-5 pb-4" style="background: #070b12; border-top: 1px solid #2a3440;">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-5">
+        <h5 class="text-warning">Leruleng Mining Services (Pty) Ltd</h5>
+        <p class="text-secondary">Community-based earthmoving partner for Valterra Mogalakwena Mine — creating local impact with world-class equipment and SHEQ standards.</p>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-secondary"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-secondary"><i class="fab fa-linkedin fa-lg"></i></a>
+          <a href="#" class="text-secondary"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-white">Quick links</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-secondary">Home</a></li>
+          <li><a href="#" class="text-secondary">About us</a></li>
+          <li><a href="#" class="text-secondary">Equipment fleet</a></li>
+          <li><a href="#" class="text-secondary">Privacy policy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-white">Get in touch</h6>
+        <p class="text-secondary mb-1"><i class="fas fa-phone-alt me-2"></i>073 817 2730</p>
+        <p class="text-secondary mb-1"><i class="fas fa-envelope me-2"></i>penicia.selolo@icloud.com</p>
+        <p class="text-secondary"><i class="fas fa-map-pin me-2"></i>236 Leruleng Village, Mapela, Mokopane, 0610</p>
+      </div>
+    </div>
+    <hr class="opacity-25">
+    <div class="text-center text-secondary small">
+      &copy; 2025 Leruleng Mining Services (Pty) Ltd — Reg: 2025/878945/07 | Tax: 9204533286 | All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // video fallback
+  const video = document.getElementById('heroBgVideo');
+  if(video) {
+    video.addEventListener('error', function() {
+      const heroSection = document.querySelector('.contact-hero');
+      if(heroSection) {
+        heroSection.style.background = "url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')";
+        heroSection.style.backgroundSize = "cover";
+        heroSection.style.backgroundPosition = "center";
+        video.style.display = "none";
+      }
+    });
+  }
+
+  // contact form submission handler with modern alert
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName')?.value.trim();
+      if(!name) {
+        alert("Please enter your full name.");
+        return;
+      }
+      // success simulation
+      alert(`✅ Thank you ${name}! Your earthmoving inquiry has been received. Leruleng Mining Services will respond within 24 hours with a custom quote.`);
+      contactForm.reset();
+    });
+  }
+
+  // smooth scroll for any anchor links in navbar/footer
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const targetElem = document.querySelector(targetId);
+      if(targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // simple CTA button alert for quick quote
+  const quoteNavBtn = document.querySelector('.btn-outline-warning');
+  if(quoteNavBtn && quoteNavBtn.innerText.includes('Quote')) {
+    quoteNavBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('contactForm')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+  const callBtn = document.querySelector('.btn-warning.px-4');
+  if(callBtn && callBtn.innerText.includes('Call')) {
+    callBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'tel:0738172730';
+    });
+  }
+</script>
+</body>
+</html>

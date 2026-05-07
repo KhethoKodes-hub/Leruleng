@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Leruleng Mining Services | About Us — Community Earthmoving Excellence</title>
+  <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0f1c;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* glassmorphism core */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(16px);
+      border-color: rgba(255, 200, 50, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-hover-glow {
+      transition: all 0.25s ease;
+      border-radius: 40px;
+      padding: 10px 28px;
+      font-weight: 600;
+    }
+    .btn-hover-glow:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+      filter: brightness(1.02);
+    }
+
+    /* hero section with background image (mining alignment) */
+    .about-hero {
+      position: relative;
+      min-height: 65vh;
+      background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,40,80,0.65) 50%, rgba(180,40,20,0.4) 100%), 
+                        url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-overlay-brand {
+      background: linear-gradient(125deg, rgba(255,255,240,0.2) 0%, rgba(30, 80, 130, 0.55) 40%, rgba(220, 60, 40, 0.3) 75%, rgba(0,0,0,0.7) 100%);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+    }
+
+    /* section styles */
+    .section-title {
+      font-weight: 800;
+      background: linear-gradient(120deg, #fff, #7bb3ff, #ffc107);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .bg-dark-soft {
+      background: #0c1120;
+    }
+
+    .stat-circle {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    .value-tag {
+      border-left: 3px solid #f5b042;
+      background: rgba(255,255,245,0.05);
+    }
+
+    .team-img-placeholder {
+      background: linear-gradient(145deg, #2c3e4e, #16212e);
+      border-radius: 28px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    footer a {
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffc107 !important;
+    }
+
+    /* background mining pattern for CTA */
+    .bg-mining-cta {
+      background-image: url('https://images.unsplash.com/photo-1581093806997-124294d2f6a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      z-index: 1;
+    }
+    .bg-mining-cta::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(6, 14, 28, 0.85);
+      z-index: -1;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #141c2c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e68a2e;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation with simple glassmorphic bar -->
+<nav class="navbar navbar-expand-lg sticky-top py-3" style="background: rgba(8, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,215,0,0.2);">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-white" href="#">
+      <i class="fas fa-hard-hat text-warning me-2"></i>Leruleng Mining
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon bg-light rounded"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+        <li class="nav-item"><a class="nav-link text-white-75" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link active text-warning fw-semibold" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link text-white-75" href="#">Equipment</a></li>
+        <li class="nav-item"><a class="nav-link text-white-75" href="#">Contact</a></li>
+      </ul>
+      <a href="#" class="btn btn-outline-warning btn-sm rounded-pill ms-lg-3 px-4">Request Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- About Hero Section (background image mining + gradient blend) -->
+<section class="about-hero">
+  <div class="hero-overlay-brand"></div>
+  <div class="about-hero-content">
+    <div class="glass-card p-4 p-md-5" style="background: rgba(10, 20, 35, 0.55); backdrop-filter: blur(14px);">
+      <span class="badge bg-warning text-dark mb-3 px-4 py-2 rounded-pill fs-6"><i class="fas fa-globe-africa me-2"></i> Proudly Limpopo Owned</span>
+      <h1 class="display-4 fw-bold text-white">About <span class="text-warning">Leruleng Mining Services</span></h1>
+      <p class="lead text-light mt-3">Empowering local communities & mining value chains with reliable earthmoving excellence, certified operators, and full SHEQ compliance.</p>
+      <div class="mt-4">
+        <a href="#story" class="btn btn-warning btn-hover-glow me-2"><i class="fas fa-chevron-down me-2"></i>Our story</a>
+        <a href="#values" class="btn btn-outline-light btn-hover-glow">Core values</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Executive Summary + Company DNA -->
+<section id="story" class="py-5 bg-dark-soft">
+  <div class="container py-4">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <i class="fas fa-chart-line fs-2 text-warning mb-3"></i>
+          <h3 class="text-white fw-bold">Executive Summary</h3>
+          <p class="text-light-emphasis">Leruleng Mining Services (Pty) Ltd is a locally owned, community-based earthmoving business established to support Valterra Mogalakwena Mine and its contractors. We provide specialized earthmoving solutions including <strong>30-ton excavators, 20-ton motor graders, TLB backhoe loaders</strong> — essential for road maintenance, bulk earthworks, trenching, rehabilitation, and general construction activities across the life of mine.</p>
+          <p class="text-light">Our mission is to deliver reliable, safe, and productive equipment hire with operator model, creating sustainable local employment and technical capacity within Mapela, Mokopane, and surrounding villages.</p>
+          <hr class="opacity-25">
+          <div class="row mt-2">
+            <div class="col-6"><i class="fas fa-check-circle text-warning"></i> Registered: 12/11/25</div>
+            <div class="col-6"><i class="fas fa-check-circle text-warning"></i> Reg No: 2025/878945/07</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="glass-card p-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="fas fa-building fs-1 text-info"></i>
+            <h4 class="text-white mb-0">Business Model Excellence</h4>
+          </div>
+          <p class="text-light">We operate a flexible <strong>equipment hire with operator model</strong> – offering hourly hire, daily hire, monthly contract hire, and long-term earthworks packages. All operations include:</p>
+          <ul class="text-light list-unstyled">
+            <li><i class="fas fa-user-check text-warning me-2"></i> Certified & experienced equipment operators</li>
+            <li><i class="fas fa-clipboard-list text-warning me-2"></i> Dedicated site supervisor & SHEQ compliance</li>
+            <li><i class="fas fa-wrench text-warning me-2"></i> Preventive maintenance (OEM / accredited providers)</li>
+            <li><i class="fas fa-chart-simple text-warning me-2"></i> Daily pre-use inspections + monthly schedules</li>
+            <li><i class="fas fa-gas-pump text-warning me-2"></i> Fuel management & utilization tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Equipment fleet showcase with highlight cards (aligned with mining services) -->
+<section class="py-5" style="background: #0f1622;">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title display-5 fw-bold">Heavy Fleet That Delivers</h2>
+      <p class="text-white-50 mx-auto" style="max-width: 680px;">Modern earthmoving assets designed for Mogalakwena's demanding environment.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="glass-card text-white p-3 text-center h-100">
+          <i class="fas fa-excavator fa-3x text-warning mb-2"></i>
+          <h5>60-ton Excavator</h5>
+          <small>Bulk earthworks, rock</small>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="glass-card text-white p-3 text-center h-100">
+          <i class="fas fa-road fa-3x text-warning mb-2"></i>
+          <h5>20-ton Motor Grader</h5>
+          <small>Precision grading & drainage</small>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="glass-card text-white p-3 text-center h-100">
+          <i class="fas fa-shovel fa-3x text-warning mb-2"></i>
+          <h5>TLB Backhoe Loader</h5>
+          <small>Trenching & foundations</small>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="glass-card text-white p-3 text-center h-100">
+          <i class="fas fa-drum-steelpan fa-3x text-warning mb-2"></i>
+          <h5>HQ-YL8000 Roller</h5>
+          <small>Compaction expert</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Economic Impact + Market Opportunity – Glass double card -->
+<section id="values" class="py-5 bg-dark-soft">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-md-6">
+        <div class="glass-card p-4 h-100">
+          <div class="d-flex gap-3 mb-3"><i class="fas fa-hand-holding-heart fs-1 text-danger"></i><h3 class="text-white fw-bold">Social & Economic Impact</h3></div>
+          <p class="text-light">Leruleng directly supports Valterra Mogalakwena's Social Performance goals by:</p>
+          <ul class="text-light">
+            <li><i class="fas fa-briefcase text-warning me-2"></i> Creating skilled local employment opportunities</li>
+            <li><i class="fas fa-graduation-cap text-warning me-2"></i> Developing earthmoving operator skills within host community</li>
+            <li><i class="fas fa-chart-line text-warning me-2"></i> Enabling meaningful participation of local suppliers in mining value chain</li>
+            <li><i class="fas fa-seedling text-warning me-2"></i> Supporting local economic growth & enterprise development</li>
+            <li><i class="fas fa-hard-hat text-warning me-2"></i> Building long-term technical capability in Leruleng village & surroundings</li>
+          </ul>
+          <div class="mt-2"><span class="badge bg-light text-dark">SDG aligned: Decent work & economic growth</span></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="glass-card p-4 h-100">
+          <div class="d-flex gap-3 mb-3"><i class="fas fa-chart-pie fs-1 text-info"></i><h3 class="text-white fw-bold">Market Opportunity</h3></div>
+          <p class="text-light">Mogalakwena Mine requires continuous earthmoving support across the life of mine: road construction & regrading, bulk earthworks, trenching, foundations, drainage works, rehabilitation, and environmental compliance. Local suppliers with reliable equipment and trained operators remain limited — creating a strong market entry opportunity for Leruleng Mining Services.</p>
+          <div class="row mt-3 text-center">
+            <div class="col-4 border-end border-secondary"><h4 class="text-warning">+35%</h4><small class="text-light-50">Demand growth</small></div>
+            <div class="col-4 border-end border-secondary"><h4 class="text-warning">24/7</h4><small class="text-light-50">Mine support</small></div>
+            <div class="col-4"><h4 class="text-warning">LTD</h4><small class="text-light-50">Local competitors</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US? + Company details & Registration numbers in glass style -->
+<section class="py-5" style="background: #0b111e;">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="text-white fw-bold">Why Leruleng Mining Services</h2>
+      <div class="bg-warning mx-auto my-3" style="width: 70px; height: 3px;"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+          <i class="fas fa-user-tie fa-2x text-warning mb-3"></i>
+          <h5 class="text-white">Certified Operators + Supervisor</h5>
+          <p class="text-light">Fully experienced operators, daily pre-use inspections, and dedicated site supervision for maximum productivity.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+          <i class="fas fa-chart-line fa-2x text-warning mb-3"></i>
+          <h5 class="text-white">Utilization Tracking</h5>
+          <p class="text-light">Real-time fuel management, operator logs, and monthly maintenance schedules. 100% SHEQ aligned.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center h-100">
+          <i class="fas fa-file-invoice-dollar fa-2x text-warning mb-3"></i>
+          <h5 class="text-white">Flexible Hire Models</h5>
+          <p class="text-light">Hourly, daily, monthly, or long-term earthworks packages — tailored to mine & contractor needs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Company registration + Official details + Contact card -->
+<section class="py-4 bg-dark-soft">
+  <div class="container">
+    <div class="glass-card p-4 p-md-5">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3 class="text-warning"><i class="fas fa-building me-2"></i>Registered Office</h3>
+          <p class="text-light mb-1"><strong>Leruleng Mining Services (Pty) Ltd</strong><br>236 Leruleng Village, Mapela<br>Mokopane, Limpopo, 0610<br>South Africa</p>
+          <p class="text-light mt-2"><i class="fas fa-phone-alt me-2 text-warning"></i>073 817 2730<br><i class="fas fa-envelope me-2 text-warning"></i>penicia.selolo@icloud.com</p>
+        </div>
+        <div class="col-md-6">
+          <div class="row text-center g-3">
+            <div class="col-6">
+              <div class="bg-dark p-3 rounded-4">
+                <i class="fas fa-id-card fs-3 text-warning"></i>
+                <p class="text-white mb-0 mt-2 fw-bold">Reg Number</p>
+                <small class="text-light">2025/878945/07</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="bg-dark p-3 rounded-4">
+                <i class="fas fa-chart-simple fs-3 text-warning"></i>
+                <p class="text-white mb-0 mt-2 fw-bold">Tax Number</p>
+                <small class="text-light">9204533286</small>
+              </div>
+            </div>
+            <div class="col-12 mt-2">
+              <p class="text-light mb-0"><i class="fas fa-calendar-alt me-1 text-warning"></i> Registration date: 12 November 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <div class="text-center">
+        <p class="text-light">We are fully committed to B-BBEE and local enterprise development — enabling meaningful participation of local suppliers in the Mogalakwena mining value chain.</p>
+        <a href="#" class="btn btn-outline-warning rounded-pill px-5"><i class="fas fa-handshake me-2"></i>Partner with us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to action section with background image of mining site -->
+<section class="py-5 bg-mining-cta">
+  <div class="container text-center py-5">
+    <div class="glass-card d-inline-block p-4 p-md-5 mx-auto" style="max-width: 750px;">
+      <i class="fas fa-hard-hat fs-1 text-warning mb-3"></i>
+      <h3 class="text-white fw-bold">Ready to elevate your earthmoving operations?</h3>
+      <p class="text-light">Get a customized quote for excavator, grader, TLB, or roller hire. Leruleng Mining Services delivers reliability and safety.</p>
+      <div class="mt-3 d-flex flex-wrap justify-content-center gap-3">
+        <a href="#" class="btn btn-warning btn-hover-glow px-4"><i class="fas fa-phone-alt me-2"></i> Call 073 817 2730</a>
+        <a href="#" class="btn btn-outline-light btn-hover-glow px-4"><i class="fas fa-envelope me-2"></i> penicia.selolo@icloud.com</a>
+      </div>
+      <p class="text-white-50 mt-3 small">Hourly | Daily | Monthly contracts — fully insured operators</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="pt-5 pb-4" style="background: #070b12; border-top: 1px solid #2a3440;">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-5">
+        <h5 class="text-warning">Leruleng Mining Services (Pty) Ltd</h5>
+        <p class="text-secondary">Community-driven earthmoving partner for Valterra Mogalakwena Mine — creating local impact with world-class equipment and SHEQ standards.</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-white">Explore</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-secondary">Home</a></li>
+          <li><a href="#" class="text-secondary">About us</a></li>
+          <li><a href="#" class="text-secondary">Heavy Equipment</a></li>
+          <li><a href="#" class="text-secondary">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-white">Our Location</h6>
+        <address class="text-secondary">236 Leruleng Village, Mapela, Mokopane, Limpopo, 0610, SA</address>
+        <p class="text-secondary mb-0"><i class="fas fa-phone-alt me-2"></i>073 817 2730</p>
+        <p class="text-secondary"><i class="fas fa-envelope me-2"></i>penicia.selolo@icloud.com</p>
+      </div>
+    </div>
+    <hr class="opacity-25">
+    <div class="text-center text-secondary small">
+      &copy; 2025 Leruleng Mining Services (Pty) Ltd — Registration: 2025/878945/07 | All rights reserved. Empowering Limpopo mining.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // add smooth scrolling for internal hash links (if needed)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const targetElem = document.querySelector(targetId);
+      if(targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  // Optional alert for CTA buttons demo
+  const btns = document.querySelectorAll('.btn-outline-warning, .btn-warning');
+  btns.forEach(btn => {
+    if(btn.innerText.includes('Quote') || btn.innerText.includes('Partner')) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("📞 Thank you for your interest! Leruleng Mining Services will respond within 24 hours with a tailored earthmoving proposal.");
+      });
+    }
+  });
+</script>
+</body>
+</html>
