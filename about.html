@@ -1,297 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Leruleng Mining Services | About Us — Community Earthmoving Excellence</title>
-  <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leruleng Mining Services | About Us — Community Earthmoving Excellence</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --gold: #F5B800;
+  --gold-light: #FFD84D;
+  --red: #C8281E;
+  --blue-deep: #001840;
+  --blue-mid: #003080;
+  --blue-bright: #0055CC;
+  --white: #FFFFFF;
+  --dark: #060B14;
+  --dark-2: #0A1222;
+  --dark-3: #0F1A2E;
+  --glass-bg: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+  --glass-border-gold: rgba(245,184,0,0.4);
+  --text-muted: rgba(210,225,245,0.7);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; cursor: none; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0a0f1c;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
+.cursor-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; }
+.cursor-ring { width: 36px; height: 36px; border: 1.5px solid rgba(245,184,0,0.5); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transition: all 0.12s ease; }
 
-    /* glassmorphism core */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 32px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-    }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--blue-mid); border-radius: 10px; }
 
-    .glass-card:hover {
-      background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(16px);
-      border-color: rgba(255, 200, 50, 0.5);
-      transform: translateY(-5px);
-      box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.4);
-    }
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 3rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; }
+nav.scrolled { background: white; backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 0.7rem 3rem; }
+.nav-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; color: var(--white); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--dark); border: none; padding: 0.6rem 1.5rem; border-radius: 2px; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; cursor: none; text-decoration: none; transition: all 0.2s; }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-    .btn-hover-glow {
-      transition: all 0.25s ease;
-      border-radius: 40px;
-      padding: 10px 28px;
-      font-weight: 600;
-    }
-    .btn-hover-glow:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.3);
-      filter: brightness(1.02);
-    }
+/* HERO */
+.about-hero {
+  position: relative; width: 100%; height: 70vh; min-height: 500px;
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('./assets/s4.png') center/cover;
+  filter: brightness(0.4) contrast(1.1);
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+@keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, rgba(0,24,64,0.8) 0%, transparent 60%),
+    linear-gradient(to top, rgba(6,11,20,0.95) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0,24,64,0.4), rgba(200,40,30,0.1), rgba(245,184,0,0.07));
+}
+.hero-content { position: relative; z-index: 3; max-width: 1100px; width: 100%; padding: 0 3rem; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(245,184,0,0.12); border: 1px solid rgba(245,184,0,0.35); border-radius: 2px; padding: 0.4rem 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.hero-tag .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);} }
+.hero-headline { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; line-height: 0.92; letter-spacing: -1px; }
+.hero-headline .line1 { display: block; color: var(--white); }
+.hero-headline .line2 { display: block; color: var(--gold); }
+.hero-headline .line3 { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.3); }
+.hero-sub { color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin: 1.2rem 0 2rem; max-width: 500px; }
 
-    /* hero section with background image (mining alignment) */
-    .about-hero {
-      position: relative;
-      min-height: 65vh;
-      background-image: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,40,80,0.65) 50%, rgba(180,40,20,0.4) 100%), 
-                        url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-      background-size: cover;
-      background-position: center 30%;
-      background-attachment: fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* Breadcrumb */
+.breadcrumb-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
+.breadcrumb-bar a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.breadcrumb-bar a:hover { color: var(--gold); }
+.breadcrumb-bar span { color: var(--gold); font-size: 0.8rem; }
+.breadcrumb-bar .sep { color: rgba(255,255,255,0.2); }
 
-    .hero-overlay-brand {
-      background: linear-gradient(125deg, rgba(255,255,240,0.2) 0%, rgba(30, 80, 130, 0.55) 40%, rgba(220, 60, 40, 0.3) 75%, rgba(0,0,0,0.7) 100%);
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
+/* SECTIONS */
+section { padding: 7rem 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
 
-    .about-hero-content {
-      position: relative;
-      z-index: 3;
-      text-align: center;
-      max-width: 900px;
-      padding: 2rem;
-    }
+.section-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.section-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1; letter-spacing: -0.5px; }
+.text-gold { color: var(--gold); }
 
-    /* section styles */
-    .section-title {
-      font-weight: 800;
-      background: linear-gradient(120deg, #fff, #7bb3ff, #ffc107);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      display: inline-block;
-    }
+/* STORY SECTION */
+.story-section { background: var(--dark-2); position: relative; overflow: hidden; }
+.story-section::before { content: ''; position: absolute; right: 0; top: 0; width: 45%; height: 100%; background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=80') center/cover; opacity: 0.06; }
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; }
 
-    .bg-dark-soft {
-      background: #0c1120;
-    }
+.lead-text { font-size: 1.2rem; color: rgba(220,235,255,0.9); line-height: 1.7; font-weight: 400; margin-bottom: 1.5rem; }
+.body-text { color: var(--text-muted); line-height: 1.75; font-size: 1rem; margin-bottom: 1.5rem; }
 
-    .stat-circle {
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.info-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 1.25rem; transition: border-color 0.3s; }
+.info-box:hover { border-color: rgba(245,184,0,0.3); }
+.info-box i { color: var(--gold); font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
+.info-box strong { display: block; font-size: 0.9rem; color: var(--white); margin-bottom: 0.2rem; }
+.info-box small { font-size: 0.75rem; color: var(--text-muted); }
 
-    .value-tag {
-      border-left: 3px solid #f5b042;
-      background: rgba(255,255,245,0.05);
-    }
+/* Glass card */
+.glass-card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 4px; padding: 2.5rem; position: relative; overflow: hidden; transition: all 0.3s; }
+.glass-card:hover { border-color: var(--glass-border-gold); }
+.glass-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), var(--red)); }
 
-    .team-img-placeholder {
-      background: linear-gradient(145deg, #2c3e4e, #16212e);
-      border-radius: 28px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 1rem; }
+.card-body-text { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-    footer a {
-      transition: 0.2s;
-      text-decoration: none;
-    }
-    footer a:hover {
-      color: #ffc107 !important;
-    }
+/* Feature list */
+.feature-list { list-style: none; margin: 1.5rem 0; }
+.feature-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.92rem; color: rgba(210,225,240,0.85); }
+.feature-list li:last-child { border-bottom: none; }
+.feature-list li i { color: var(--gold); width: 18px; text-align: center; font-size: 0.85rem; margin-top: 2px; flex-shrink: 0; }
 
-    /* background mining pattern for CTA */
-    .bg-mining-cta {
-      background-image: url('https://images.unsplash.com/photo-1581093806997-124294d2f6a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      z-index: 1;
-    }
-    .bg-mining-cta::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(6, 14, 28, 0.85);
-      z-index: -1;
-    }
+/* MISSION / VALUES */
+.values-section { background: var(--dark-3); position: relative; overflow: hidden; }
+.values-section::before { content: ''; position: absolute; inset: 0; background: url('./assets/s5.png') center/cover; opacity: 0.05; }
+.values-header { text-align: center; margin-bottom: 4rem; position: relative; }
+.values-header .section-eyebrow { justify-content: center; }
+.values-header .section-eyebrow::before { display: none; }
+.values-header .section-eyebrow::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold), var(--red)); margin: 1rem auto 0; }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #141c2c;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #e68a2e;
-      border-radius: 10px;
-    }
-  </style>
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; }
+.value-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 2rem; transition: all 0.35s ease; cursor: none; position: relative; overflow: hidden; }
+.value-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0; background: linear-gradient(to top, rgba(245,184,0,0.05), transparent); transition: height 0.4s; }
+.value-card:hover { border-color: rgba(245,184,0,0.3); transform: translateY(-6px); }
+.value-card:hover::after { height: 100%; }
+.value-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(245,184,0,0.08); border: 1px solid rgba(245,184,0,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; transition: all 0.3s; }
+.value-card:hover .value-icon { background: rgba(245,184,0,0.15); border-color: rgba(245,184,0,0.35); }
+.value-icon i { color: var(--gold); font-size: 1.2rem; }
+.value-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; }
+.value-desc { color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
+
+/* BUSINESS MODEL */
+.model-section { background: var(--dark-2); }
+.model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.model-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 2rem; transition: all 0.3s; }
+.model-card:hover { border-color: rgba(245,184,0,0.25); transform: translateY(-4px); }
+.model-card-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.model-card-icon { width: 44px; height: 44px; border-radius: 4px; background: rgba(245,184,0,0.1); border: 1px solid rgba(245,184,0,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.model-card-icon i { color: var(--gold); font-size: 1.1rem; }
+.model-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; }
+
+/* Hire options chips */
+.hire-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+.hire-chip { background: rgba(0,48,128,0.2); border: 1px solid rgba(0,85,204,0.25); border-radius: 2px; padding: 0.75rem 1rem; font-size: 0.8rem; font-weight: 600; color: rgba(160,200,255,0.9); display: flex; align-items: center; gap: 0.5rem; }
+.hire-chip i { color: var(--blue-bright); }
+
+/* IMPACT SECTION */
+.impact-section { background: var(--dark); position: relative; overflow: hidden; }
+.impact-section::before { content: ''; position: absolute; right: -300px; top: -300px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(0,48,128,0.12), transparent 70%); }
+.impact-section::after { content: ''; position: absolute; left: -200px; bottom: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(200,40,30,0.07), transparent 70%); }
+.impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; position: relative; }
+.impact-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 2.5rem; transition: all 0.3s; }
+.impact-card:hover { border-color: rgba(245,184,0,0.25); transform: translateY(-5px); }
+.impact-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.impact-card-icon { font-size: 2rem; }
+
+.check-list { list-style: none; }
+.check-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.5rem 0; font-size: 0.9rem; color: rgba(210,225,240,0.85); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.check-list li:last-child { border-bottom: none; }
+.check-list li::before { content: '▸'; color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+
+.prog-item { margin-bottom: 1rem; }
+.prog-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+.prog-bar-bg { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+.prog-bar { height: 100%; border-radius: 2px; position: relative; }
+.prog-bar::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 2s linear infinite; }
+@keyframes shimmer { from{transform:translateX(-100%);}to{transform:translateX(200%);} }
+.prog-gold { background: var(--gold); }
+.prog-blue { background: var(--blue-bright); }
+.prog-red { background: var(--red); }
+
+/* REGISTRATION */
+.reg-section {
+  background: var(--dark-2); position: relative; overflow: hidden;
+}
+.reg-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('./assets/s2.png') center/cover;
+  opacity: 0.04;
+}
+.reg-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; }
+.reg-detail-list { list-style: none; margin: 1.5rem 0 2rem; }
+.reg-detail-list li { display: flex; align-items: flex-start; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.reg-detail-list li:last-child { border-bottom: none; }
+.reg-icon { width: 36px; height: 36px; border-radius: 2px; background: rgba(245,184,0,0.1); border: 1px solid rgba(245,184,0,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.reg-icon i { color: var(--gold); font-size: 0.85rem; }
+.reg-detail-text strong { display: block; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem; }
+.reg-detail-text span { color: rgba(210,225,240,0.85); font-size: 0.9rem; }
+.reg-numbers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.reg-num-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 1.5rem; text-align: center; transition: all 0.3s; }
+.reg-num-card:hover { border-color: rgba(245,184,0,0.3); }
+.reg-num-card i { color: var(--gold); font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
+.reg-num-card strong { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+.reg-num-card small { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.5px; }
+.bbee-strip { background: rgba(0,48,128,0.15); border: 1px solid rgba(0,85,204,0.2); border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.bbee-strip i { color: var(--blue-bright); font-size: 1.2rem; flex-shrink: 0; }
+.bbee-strip p { font-size: 0.88rem; color: rgba(160,200,255,0.9); line-height: 1.5; margin: 0; }
+
+/* PARALLAX BANNER */
+.banner-section { position: relative; height: 380px; display: flex; align-items: center; overflow: hidden; }
+.banner-bg { position: absolute; inset: 0; background: url('./assets/s6.png') center/cover fixed; filter: brightness(0.25) contrast(1.1); }
+.banner-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,24,64,0.9), rgba(200,40,30,0.2), rgba(6,11,20,0.8)); }
+.banner-content { position: relative; z-index: 2; width: 100%; text-align: center; padding: 0 3rem; }
+.banner-content h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; letter-spacing: -0.5px; line-height: 1; margin-bottom: 1.2rem; }
+.banner-content h2 .accent { color: var(--gold); }
+.banner-content p { color: var(--text-muted); font-size: 1rem; max-width: 560px; margin: 0 auto 2rem; }
+
+/* Buttons */
+.btn-primary-gold { background: var(--gold); color: var(--dark); border: none; padding: 0.9rem 2rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 2px; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.25s; cursor: none; position: relative; overflow: hidden; }
+.btn-primary-gold::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.2); transform: translateX(-100%); transition: transform 0.3s; }
+.btn-primary-gold:hover::after { transform: translateX(0); }
+.btn-primary-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(245,184,0,0.3); }
+.btn-outline-light-custom { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.25); padding: 0.9rem 2rem; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 2px; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.25s; cursor: none; }
+.btn-outline-light-custom:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* FOOTER */
+footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 4rem 0 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; }
+.footer-brand-name span { color: var(--gold); }
+.footer-tagline { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 280px; margin-bottom: 1.5rem; }
+.footer-socials { display: flex; gap: 0.75rem; }
+.social-link { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; text-decoration: none; transition: all 0.2s; cursor: none; }
+.social-link:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.6rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+.footer-links a::before { content: '›'; color: var(--gold); }
+.footer-links a:hover { color: var(--white); }
+.footer-reg { color: var(--text-muted); font-size: 0.8rem; line-height: 2; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+@media(max-width:900px) {
+  .story-grid, .model-grid, .impact-grid, .reg-inner, .footer-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .container { padding: 0 1.5rem; }
+  .hero-content { padding: 0 1.5rem; }
+}
+</style>
 </head>
 <body>
 
-<!-- Navigation with simple glassmorphic bar -->
-<nav class="navbar navbar-expand-lg sticky-top py-3" style="background: rgba(8, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,215,0,0.2);">
-  <div class="container">
-    <a class="navbar-brand fw-bold text-white" href="#">
-      <i class="fas fa-hard-hat text-warning me-2"></i>Leruleng Mining
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon bg-light rounded"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-        <li class="nav-item"><a class="nav-link text-white-75" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link active text-warning fw-semibold" href="#">About</a></li>
-        <li class="nav-item"><a class="nav-link text-white-75" href="#">Equipment</a></li>
-        <li class="nav-item"><a class="nav-link text-white-75" href="#">Contact</a></li>
-      </ul>
-      <a href="#" class="btn btn-outline-warning btn-sm rounded-pill ms-lg-3 px-4">Request Quote</a>
-    </div>
-  </div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="leruleng-mining.html" class="nav-logo"><img src="assets/Lerulenglogo.png" style="height:150px; width:150px" alt="LERULENG MINING"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <!--<li><a href="about.html" class="active">About</a></li>-->
+    <li><a href="services.html">Fleet</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
 </nav>
 
-<!-- About Hero Section (background image mining + gradient blend) -->
+<!-- HERO -->
 <section class="about-hero">
-  <div class="hero-overlay-brand"></div>
-  <div class="about-hero-content">
-    <div class="glass-card p-4 p-md-5" style="background: rgba(10, 20, 35, 0.55); backdrop-filter: blur(14px);">
-      <span class="badge bg-warning text-dark mb-3 px-4 py-2 rounded-pill fs-6"><i class="fas fa-globe-africa me-2"></i> Proudly Limpopo Owned</span>
-      <h1 class="display-4 fw-bold text-white">About <span class="text-warning">Leruleng Mining Services</span></h1>
-      <p class="lead text-light mt-3">Empowering local communities & mining value chains with reliable earthmoving excellence, certified operators, and full SHEQ compliance.</p>
-      <div class="mt-4">
-        <a href="#story" class="btn btn-warning btn-hover-glow me-2"><i class="fas fa-chevron-down me-2"></i>Our story</a>
-        <a href="#values" class="btn btn-outline-light btn-hover-glow">Core values</a>
-      </div>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb-bar">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="about.html" style="color:var(--gold);font-size:0.8rem;">About Us</a>
+    </div>
+    <!--<div class="hero-tag"><span class="dot"></span> Proudly Limpopo Owned & Operated</div>-->
+    <h1 class="hero-headline">
+      <span class="line1">ROOTED IN</span>
+      <span class="line2">COMMUNITY</span>
+      <span class="line3">BUILT TO LAST</span>
+    </h1>
+    <p class="hero-sub">Empowering local communities and mining value chains with reliable earthmoving excellence, certified operators, and full SHEQ compliance.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="about.html" class="btn-primary-gold"><i class="fas fa-chevron-down"></i> Our Story</a>
+      <a href="about.html" class="btn-outline-light-custom"><i class="fas fa-star"></i> Core Values</a>
     </div>
   </div>
 </section>
 
-<!-- Executive Summary + Company DNA -->
-<section id="story" class="py-5 bg-dark-soft">
-  <div class="container py-4">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-6">
-        <div class="glass-card p-4 h-100">
-          <i class="fas fa-chart-line fs-2 text-warning mb-3"></i>
-          <h3 class="text-white fw-bold">Executive Summary</h3>
-          <p class="text-light-emphasis">Leruleng Mining Services (Pty) Ltd is a locally owned, community-based earthmoving business established to support Valterra Mogalakwena Mine and its contractors. We provide specialized earthmoving solutions including <strong>30-ton excavators, 20-ton motor graders, TLB backhoe loaders</strong> — essential for road maintenance, bulk earthworks, trenching, rehabilitation, and general construction activities across the life of mine.</p>
-          <p class="text-light">Our mission is to deliver reliable, safe, and productive equipment hire with operator model, creating sustainable local employment and technical capacity within Mapela, Mokopane, and surrounding villages.</p>
-          <hr class="opacity-25">
-          <div class="row mt-2">
-            <div class="col-6"><i class="fas fa-check-circle text-warning"></i> Registered: 12/11/25</div>
-            <div class="col-6"><i class="fas fa-check-circle text-warning"></i> Reg No: 2025/878945/07</div>
+<!-- STORY / EXECUTIVE SUMMARY -->
+<section id="story" class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Executive Summary</div>
+        <h2 class="section-title">Locally owned.<br><span class="text-gold">Community powered.</span></h2>
+        <p class="lead-text">Leruleng Mining Services (Pty) Ltd is a community-based earthmoving company established to serve Valterra Mogalakwena Mine and its contractors.</p>
+        <p class="body-text">We provide specialized earthmoving solutions — excavators, motor graders, and TLBs — essential for road maintenance, bulk earthworks, trenching, rehabilitation, and construction activities across the full life of mine. Our mission is to deliver reliable, safe, and productive equipment hire while creating sustainable local employment and technical capacity within Mapela, Mokopane, and surrounding villages.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-road"></i> Road construction, grading & haul road maintenance</li>
+          <li><i class="fas fa-layer-group"></i> Bulk earthworks & trenching operations</li>
+          <li><i class="fas fa-seedling"></i> Environmental rehabilitation & compliance works</li>
+          <li><i class="fas fa-building"></i> Foundations, drainage & civil infrastructure</li>
+          <li><i class="fas fa-users"></i> Certified, accredited operators on every shift</li>
+        </ul>
+        <div class="info-grid">
+          <div class="info-box">
+            <i class="fas fa-calendar-alt"></i>
+            <strong>12 November 2025</strong>
+            <small>Date Registered</small>
+          </div>
+          <div class="info-box">
+            <i class="fas fa-file-alt"></i>
+            <strong>2025/878945/07</strong>
+            <small>Registration Number</small>
+          </div>
+          <div class="info-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <strong>Leruleng Village, Mapela</strong>
+            <small>Registered Address</small>
+          </div>
+          <div class="info-box">
+            <i class="fas fa-receipt"></i>
+            <strong>9204533286</strong>
+            <small>Tax Reference Number</small>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="glass-card p-4">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <i class="fas fa-building fs-1 text-info"></i>
-            <h4 class="text-white mb-0">Business Model Excellence</h4>
+
+      <div class="reveal reveal-delay-2">
+        <div class="glass-card">
+          <div class="card-title"><i class="fas fa-briefcase text-gold" style="margin-right:0.6rem;"></i>Business Model Excellence</div>
+          <p class="card-body-text">We operate a flexible equipment hire with operator model — offering multiple hire structures tailored to mine and contractor needs. All operations include dedicated site supervision and full SHEQ compliance.</p>
+          <div class="hire-chips">
+            <div class="hire-chip"><i class="fas fa-hourglass-half"></i> Hourly Hire</div>
+            <div class="hire-chip"><i class="fas fa-sun"></i> Daily Hire</div>
+            <div class="hire-chip"><i class="fas fa-calendar-week"></i> Monthly Contract</div>
+            <div class="hire-chip"><i class="fas fa-chart-line"></i> Life of Mine</div>
           </div>
-          <p class="text-light">We operate a flexible <strong>equipment hire with operator model</strong> – offering hourly hire, daily hire, monthly contract hire, and long-term earthworks packages. All operations include:</p>
-          <ul class="text-light list-unstyled">
-            <li><i class="fas fa-user-check text-warning me-2"></i> Certified & experienced equipment operators</li>
-            <li><i class="fas fa-clipboard-list text-warning me-2"></i> Dedicated site supervisor & SHEQ compliance</li>
-            <li><i class="fas fa-wrench text-warning me-2"></i> Preventive maintenance (OEM / accredited providers)</li>
-            <li><i class="fas fa-chart-simple text-warning me-2"></i> Daily pre-use inspections + monthly schedules</li>
-            <li><i class="fas fa-gas-pump text-warning me-2"></i> Fuel management & utilization tracking</li>
+          <ul class="feature-list" style="margin-top:1.5rem;">
+            <li><i class="fas fa-user-check"></i> Certified & experienced equipment operators</li>
+            <li><i class="fas fa-clipboard-list"></i> Dedicated site supervisor on every operation</li>
+            <li><i class="fas fa-wrench"></i> Preventive maintenance via OEM providers</li>
+            <li><i class="fas fa-chart-bar"></i> Daily pre-use inspections & monthly schedules</li>
+            <li><i class="fas fa-gas-pump"></i> Fuel management & utilization tracking</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Equipment fleet showcase with highlight cards (aligned with mining services) -->
-<section class="py-5" style="background: #0f1622;">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title display-5 fw-bold">Heavy Fleet That Delivers</h2>
-      <p class="text-white-50 mx-auto" style="max-width: 680px;">Modern earthmoving assets designed for Mogalakwena's demanding environment.</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-3 col-sm-6">
-        <div class="glass-card text-white p-3 text-center h-100">
-          <i class="fas fa-excavator fa-3x text-warning mb-2"></i>
-          <h5>60-ton Excavator</h5>
-          <small>Bulk earthworks, rock</small>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="glass-card text-white p-3 text-center h-100">
-          <i class="fas fa-road fa-3x text-warning mb-2"></i>
-          <h5>20-ton Motor Grader</h5>
-          <small>Precision grading & drainage</small>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="glass-card text-white p-3 text-center h-100">
-          <i class="fas fa-shovel fa-3x text-warning mb-2"></i>
-          <h5>TLB Backhoe Loader</h5>
-          <small>Trenching & foundations</small>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="glass-card text-white p-3 text-center h-100">
-          <i class="fas fa-drum-steelpan fa-3x text-warning mb-2"></i>
-          <h5>HQ-YL8000 Roller</h5>
-          <small>Compaction expert</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Social Economic Impact + Market Opportunity – Glass double card -->
-<section id="values" class="py-5 bg-dark-soft">
-  <div class="container">
-    <div class="row g-5">
-      <div class="col-md-6">
-        <div class="glass-card p-4 h-100">
-          <div class="d-flex gap-3 mb-3"><i class="fas fa-hand-holding-heart fs-1 text-danger"></i><h3 class="text-white fw-bold">Social & Economic Impact</h3></div>
-          <p class="text-light">Leruleng directly supports Valterra Mogalakwena's Social Performance goals by:</p>
-          <ul class="text-light">
-            <li><i class="fas fa-briefcase text-warning me-2"></i> Creating skilled local employment opportunities</li>
-            <li><i class="fas fa-graduation-cap text-warning me-2"></i> Developing earthmoving operator skills within host community</li>
-            <li><i class="fas fa-chart-line text-warning me-2"></i> Enabling meaningful participation of local suppliers in mining value chain</li>
-            <li><i class="fas fa-seedling text-warning me-2"></i> Supporting local economic growth & enterprise development</li>
-            <li><i class="fas fa-hard-hat text-warning me-2"></i> Building long-term technical capability in Leruleng village & surroundings</li>
-          </ul>
-          <div class="mt-2"><span class="badge bg-light text-dark">SDG aligned: Decent work & economic growth</span></div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="glass-card p-4 h-100">
-          <div class="d-flex gap-3 mb-3"><i class="fas fa-chart-pie fs-1 text-info"></i><h3 class="text-white fw-bold">Market Opportunity</h3></div>
-          <p class="text-light">Mogalakwena Mine requires continuous earthmoving support across the life of mine: road construction & regrading, bulk earthworks, trenching, foundations, drainage works, rehabilitation, and environmental compliance. Local suppliers with reliable equipment and trained operators remain limited — creating a strong market entry opportunity for Leruleng Mining Services.</p>
-          <div class="row mt-3 text-center">
-            <div class="col-4 border-end border-secondary"><h4 class="text-warning">+35%</h4><small class="text-light-50">Demand growth</small></div>
-            <div class="col-4 border-end border-secondary"><h4 class="text-warning">24/7</h4><small class="text-light-50">Mine support</small></div>
-            <div class="col-4"><h4 class="text-warning">LTD</h4><small class="text-light-50">Local competitors</small></div>
+          <div style="margin-top:1.5rem;padding:1rem;background:rgba(245,184,0,0.06);border:1px solid rgba(245,184,0,0.15);border-radius:4px;">
+            <div style="font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Operating region</div>
+            <div style="font-size:0.95rem;color:rgba(210,225,240,0.9);">Valterra Mogalakwena Mine complex, Mapela, Mokopane — Limpopo Province, South Africa</div>
           </div>
         </div>
       </div>
@@ -299,151 +369,243 @@
   </div>
 </section>
 
-<!-- WHY US? + Company details & Registration numbers in glass style -->
-<section class="py-5" style="background: #0b111e;">
+<!-- VALUES -->
+<section id="values" class="values-section">
   <div class="container">
-    <div class="text-center mb-4">
-      <h2 class="text-white fw-bold">Why Leruleng Mining Services</h2>
-      <div class="bg-warning mx-auto my-3" style="width: 70px; height: 3px;"></div>
+    <div class="values-header reveal">
+      <div class="section-eyebrow">Our Foundation</div>
+      <h2 class="section-title">What drives us <span class="text-gold">forward</span></h2>
+      <div class="divider"></div>
     </div>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="glass-card p-4 text-center h-100">
-          <i class="fas fa-user-tie fa-2x text-warning mb-3"></i>
-          <h5 class="text-white">Certified Operators + Supervisor</h5>
-          <p class="text-light">Fully experienced operators, daily pre-use inspections, and dedicated site supervision for maximum productivity.</p>
-        </div>
+    <div class="values-grid">
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3 class="value-name">Safety First</h3>
+        <p class="value-desc">Zero-compromise approach to SHEQ standards. Every operator, every shift, every site — daily pre-use inspections and continuous safety monitoring.</p>
       </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4 text-center h-100">
-          <i class="fas fa-chart-line fa-2x text-warning mb-3"></i>
-          <h5 class="text-white">Utilization Tracking</h5>
-          <p class="text-light">Real-time fuel management, operator logs, and monthly maintenance schedules. 100% SHEQ aligned.</p>
-        </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+        <h3 class="value-name">Community Partnership</h3>
+        <p class="value-desc">Rooted in Leruleng Village — we build lasting partnerships with host communities, creating employment and developing skills that remain in Limpopo.</p>
       </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4 text-center h-100">
-          <i class="fas fa-file-invoice-dollar fa-2x text-warning mb-3"></i>
-          <h5 class="text-white">Flexible Hire Models</h5>
-          <p class="text-light">Hourly, daily, monthly, or long-term earthworks packages — tailored to mine & contractor needs.</p>
-        </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-icon"><i class="fas fa-chart-line"></i></div>
+        <h3 class="value-name">Operational Excellence</h3>
+        <p class="value-desc">Real-time utilization tracking, OEM preventive maintenance, and experienced operators ensuring maximum uptime and productivity on every contract.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon"><i class="fas fa-leaf"></i></div>
+        <h3 class="value-name">Environmental Stewardship</h3>
+        <p class="value-desc">Committed to rehabilitation and environmental compliance — we restore sites responsibly and align with mine closure and environmental standards.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon"><i class="fas fa-users"></i></div>
+        <h3 class="value-name">Skills Development</h3>
+        <p class="value-desc">Building long-term technical capability in Leruleng Village and surrounds — training operators and creating career pathways in South Africa's mining sector.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-icon"><i class="fas fa-file-contract"></i></div>
+        <h3 class="value-name">Transparent Operations</h3>
+        <p class="value-desc">Clear reporting, daily logs, fuel tracking, and honest billing. We deliver exactly what we promise — with documentation to back every hour worked.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Company registration + Official details + Contact card -->
-<section class="py-4 bg-dark-soft">
+<!-- SOCIAL & ECONOMIC IMPACT -->
+<section class="impact-section">
   <div class="container">
-    <div class="glass-card p-4 p-md-5">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <h3 class="text-warning"><i class="fas fa-building me-2"></i>Registered Office</h3>
-          <p class="text-light mb-1"><strong>Leruleng Mining Services (Pty) Ltd</strong><br>236 Leruleng Village, Mapela<br>Mokopane, Limpopo, 0610<br>South Africa</p>
-          <p class="text-light mt-2"><i class="fas fa-phone-alt me-2 text-warning"></i>073 817 2730<br><i class="fas fa-envelope me-2 text-warning"></i>penicia.selolo@icloud.com</p>
+    <div style="text-align:center;margin-bottom:4rem;" class="reveal">
+      <div class="section-eyebrow" style="justify-content:center;"><span style="width:30px;height:1px;background:var(--gold);display:block;"></span>Social Performance</div>
+      <h2 class="section-title">Creating <span class="text-gold">lasting impact</span> in Limpopo</h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card reveal reveal-delay-1">
+        <div class="impact-card-header">
+          <i class="fas fa-hand-holding-heart impact-card-icon fa-2x" style="color:#E84A4A;"></i>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;">Social Impact</h3>
         </div>
-        <div class="col-md-6">
-          <div class="row text-center g-3">
-            <div class="col-6">
-              <div class="bg-dark p-3 rounded-4">
-                <i class="fas fa-id-card fs-3 text-warning"></i>
-                <p class="text-white mb-0 mt-2 fw-bold">Reg Number</p>
-                <small class="text-light">2025/878945/07</small>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="bg-dark p-3 rounded-4">
-                <i class="fas fa-chart-simple fs-3 text-warning"></i>
-                <p class="text-white mb-0 mt-2 fw-bold">Tax Number</p>
-                <small class="text-light">9204533286</small>
-              </div>
-            </div>
-            <div class="col-12 mt-2">
-              <p class="text-light mb-0"><i class="fas fa-calendar-alt me-1 text-warning"></i> Registration date: 12 November 2025</p>
-            </div>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;">Aligned with Valterra Mogalakwena's Social Performance goals — directly benefiting host communities in Mapela, Mokopane, and surrounding villages.</p>
+        <ul class="check-list">
+          <li>Creating skilled local employment opportunities</li>
+          <li>Developing earthmoving operator skills within host community</li>
+          <li>Enabling meaningful local supplier participation</li>
+          <li>Supporting enterprise development & local economy</li>
+          <li>Building long-term technical capability in Leruleng Village</li>
+        </ul>
+        <div style="margin-top:1.5rem;background:rgba(0,48,128,0.15);border:1px solid rgba(0,85,204,0.2);border-radius:4px;padding:0.75rem 1rem;font-size:0.78rem;color:rgba(160,200,255,0.85);">
+          <i class="fas fa-certificate" style="color:var(--blue-bright);margin-right:0.4rem;"></i> SDG aligned: Decent Work & Economic Growth (Goal 8)
+        </div>
+      </div>
+
+      <div class="impact-card reveal reveal-delay-2">
+        <div class="impact-card-header">
+          <i class="fas fa-chart-pie impact-card-icon fa-2x" style="color:#4AADE8;"></i>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;">Market Opportunity</h3>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;">Mogalakwena Mine's continuous earthmoving demand across its life of mine — with limited local, reliable suppliers — creates a compelling market entry opportunity.</p>
+        <div class="prog-item">
+          <div class="prog-label"><span>Local Job Creation</span><span>85%</span></div>
+          <div class="prog-bar-bg"><div class="prog-bar prog-gold" style="width:85%"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-label"><span>Skills Development</span><span>72%</span></div>
+          <div class="prog-bar-bg"><div class="prog-bar prog-blue" style="width:72%"></div></div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-label"><span>Community Participation</span><span>90%</span></div>
+          <div class="prog-bar-bg"><div class="prog-bar prog-red" style="width:90%"></div></div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1.2rem;"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:0.4rem;"></i> Direct benefit: Leruleng Village, Mapela, Mokopane, Limpopo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION & OFFICIAL DETAILS -->
+<section class="reg-section">
+  <div class="container">
+    <div class="reg-inner">
+      <div class="reveal">
+        <div class="section-eyebrow">Company Details</div>
+        <h2 class="section-title">Registered &<br><span class="text-gold">fully compliant</span></h2>
+        <p class="body-text" style="margin-top:1rem;">Leruleng Mining Services operates with full regulatory compliance and is committed to B-BBEE and local enterprise development — enabling meaningful participation of local suppliers in the Mogalakwena mining value chain.</p>
+        <ul class="reg-detail-list">
+          <li>
+            <div class="reg-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="reg-detail-text"><strong>Phone / WhatsApp</strong><span>073 817 2730</span></div>
+          </li>
+          <li>
+            <div class="reg-icon"><i class="fas fa-envelope"></i></div>
+            <div class="reg-detail-text"><strong>Email</strong><span>penicia.selolo@icloud.com</span></div>
+          </li>
+          <li>
+            <div class="reg-icon"><i class="fas fa-map-pin"></i></div>
+            <div class="reg-detail-text"><strong>Registered Office</strong><span>236 Leruleng Village, Mapela, Mokopane, Limpopo, 0610</span></div>
+          </li>
+        </ul>
+        <div class="bbee-strip">
+          <i class="fas fa-handshake"></i>
+          <p>Fully committed to B-BBEE and local enterprise development — enabling meaningful participation of host community suppliers in Mogalakwena's mining value chain.</p>
+        </div>
+        <div style="margin-top:2rem;">
+          <a href="contact.html" class="btn-primary-gold"><i class="fas fa-handshake"></i> Partner With Us</a>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="reg-numbers-grid">
+          <div class="reg-num-card">
+            <i class="fas fa-id-card"></i>
+            <strong>2025/878945/07</strong>
+            <small>Company Reg. Number</small>
+          </div>
+          <div class="reg-num-card">
+            <i class="fas fa-receipt"></i>
+            <strong>9204533286</strong>
+            <small>Tax Reference</small>
+          </div>
+          <div class="reg-num-card">
+            <i class="fas fa-calendar-check"></i>
+            <strong>12 Nov 2025</strong>
+            <small>Registration Date</small>
+          </div>
+          <div class="reg-num-card">
+            <i class="fas fa-building"></i>
+            <strong>(Pty) Ltd</strong>
+            <small>Company Structure</small>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:2rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:var(--white);">Compliance Status</div>
+          <div style="display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88rem;color:rgba(210,225,240,0.85);">
+            <span>SHEQ Compliance</span><i class="fas fa-check-circle" style="color:#25D366;"></i>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88rem;color:rgba(210,225,240,0.85);">
+            <span>Operator Certification</span><i class="fas fa-check-circle" style="color:#25D366;"></i>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88rem;color:rgba(210,225,240,0.85);">
+            <span>OEM Maintenance Program</span><i class="fas fa-check-circle" style="color:#25D366;"></i>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.6rem 0;font-size:0.88rem;color:rgba(210,225,240,0.85);">
+            <span>Insurance Coverage</span><i class="fas fa-check-circle" style="color:#25D366;"></i>
           </div>
         </div>
       </div>
-      <hr class="border-secondary my-4">
-      <div class="text-center">
-        <p class="text-light">We are fully committed to B-BBEE and local enterprise development — enabling meaningful participation of local suppliers in the Mogalakwena mining value chain.</p>
-        <a href="#" class="btn btn-outline-warning rounded-pill px-5"><i class="fas fa-handshake me-2"></i>Partner with us</a>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- Call to action section with background image of mining site -->
-<section class="py-5 bg-mining-cta">
-  <div class="container text-center py-5">
-    <div class="glass-card d-inline-block p-4 p-md-5 mx-auto" style="max-width: 750px;">
-      <i class="fas fa-hard-hat fs-1 text-warning mb-3"></i>
-      <h3 class="text-white fw-bold">Ready to elevate your earthmoving operations?</h3>
-      <p class="text-light">Get a customized quote for excavator, grader, TLB, or roller hire. Leruleng Mining Services delivers reliability and safety.</p>
-      <div class="mt-3 d-flex flex-wrap justify-content-center gap-3">
-        <a href="#" class="btn btn-warning btn-hover-glow px-4"><i class="fas fa-phone-alt me-2"></i> Call 073 817 2730</a>
-        <a href="#" class="btn btn-outline-light btn-hover-glow px-4"><i class="fas fa-envelope me-2"></i> penicia.selolo@icloud.com</a>
-      </div>
-      <p class="text-white-50 mt-3 small">Hourly | Daily | Monthly contracts — fully insured operators</p>
-    </div>
+<!-- PARALLAX BANNER -->
+<div class="banner-section">
+  <div class="banner-bg"></div>
+  <div class="banner-overlay"></div>
+  <div class="banner-content reveal">
+    <h2>Ready to <span class="accent">partner</span> with us?</h2>
+    <p>Leruleng Mining Services is ready to support your earthmoving needs — from emergency hire to life-of-mine contracts.</p>
+    <a href="contact.html" class="btn-primary-gold"><i class="fas fa-paper-plane"></i> Request a Quote</a>
   </div>
-</section>
+</div>
 
-<!-- Footer -->
-<footer class="pt-5 pb-4" style="background: #070b12; border-top: 1px solid #2a3440;">
+<!-- FOOTER -->
+<footer>
   <div class="container">
-    <div class="row gy-4">
-      <div class="col-md-5">
-        <h5 class="text-warning">Leruleng Mining Services (Pty) Ltd</h5>
-        <p class="text-secondary">Community-driven earthmoving partner for Valterra Mogalakwena Mine — creating local impact with world-class equipment and SHEQ standards.</p>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">LERULENG <span>MINING</span> SERVICES</div>
+        <p class="footer-tagline">Community-based earthmoving and mining support — empowering Limpopo's mining value chain with modern equipment and certified operators.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/+27738172730" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
       </div>
-      <div class="col-md-3">
-        <h6 class="text-white">Explore</h6>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-secondary">Home</a></li>
-          <li><a href="#" class="text-secondary">About us</a></li>
-          <li><a href="#" class="text-secondary">Heavy Equipment</a></li>
-          <li><a href="#" class="text-secondary">Contact</a></li>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Equipment Fleet</a></li>
+          <li><a href="contact.html">Contact & Hire</a></li>
         </ul>
       </div>
-      <div class="col-md-4">
-        <h6 class="text-white">Our Location</h6>
-        <address class="text-secondary">236 Leruleng Village, Mapela, Mokopane, Limpopo, 0610, SA</address>
-        <p class="text-secondary mb-0"><i class="fas fa-phone-alt me-2"></i>073 817 2730</p>
-        <p class="text-secondary"><i class="fas fa-envelope me-2"></i>penicia.selolo@icloud.com</p>
+      <div>
+        <div class="footer-col-title">Company Info</div>
+        <div class="footer-reg">
+          <div>📍 236 Leruleng Village</div>
+          <div>Mapela, Mokopane, Limpopo 0610</div>
+          <div style="margin-top:0.5rem;">📞 073 817 2730</div>
+          <div>✉ penicia.selolo@icloud.com</div>
+          <div style="margin-top:0.5rem;">Reg: 2025/878945/07</div>
+          <div>Tax No: 9204533286</div>
+        </div>
       </div>
     </div>
-    <hr class="opacity-25">
-    <div class="text-center text-secondary small">
-      &copy; 2025 Leruleng Mining Services (Pty) Ltd — Registration: 2025/878945/07 | All rights reserved. Empowering Limpopo mining.
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Leruleng Mining Services (Pty) Ltd · All rights reserved</div>
+      <div style="color:rgba(255,255,255,0.3);font-size:0.8rem;">Empowering local mining excellence</div>
     </div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // add smooth scrolling for internal hash links (if needed)
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if(targetId === "#" || targetId === "") return;
-      const targetElem = document.querySelector(targetId);
-      if(targetElem) {
-        e.preventDefault();
-        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-  // Optional alert for CTA buttons demo
-  const btns = document.querySelectorAll('.btn-outline-warning, .btn-warning');
-  btns.forEach(btn => {
-    if(btn.innerText.includes('Quote') || btn.innerText.includes('Partner')) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert("📞 Thank you for your interest! Leruleng Mining Services will respond within 24 hours with a tailored earthmoving proposal.");
-      });
-    }
-  });
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx-4+'px';dot.style.top=my-4+'px';});
+function animateRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';requestAnimationFrame(animateRing);}
+animateRing();
+document.querySelectorAll('a,button,.value-card,.impact-card,.model-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='scale(1.6)';ring.style.borderColor='rgba(245,184,0,0.8)';});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='scale(1)';ring.style.borderColor='rgba(245,184,0,0.5)';});
+});
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});
+});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 </script>
 </body>
 </html>

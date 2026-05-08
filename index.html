@@ -176,13 +176,35 @@ nav.scrolled {
   100% { transform: translateY(-20vh) translateX(60px); opacity: 0; }
 }
 
+/* ======= HERO CONTENT — CENTERED ======= */
 .hero-content {
   position: relative; z-index: 5;
-  max-width: 1100px; width: 100%;
+  max-width: 900px; width: 100%;
   padding: 0 3rem;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 3rem; align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
+
+/* Decorative lines that slide in from left & right before text appears */
+.hero-deco-lines {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none; overflow: hidden;
+}
+.deco-line-left {
+  position: absolute; top: 50%; left: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(245,184,0,0.4), transparent);
+  animation: decoLineLeft 1.2s cubic-bezier(0.77,0,0.18,1) 0s forwards;
+}
+.deco-line-right {
+  position: absolute; top: calc(50% + 2px); right: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(to left, transparent, rgba(200,40,30,0.3), transparent);
+  animation: decoLineRight 1.2s cubic-bezier(0.77,0,0.18,1) 0.1s forwards;
+}
+@keyframes decoLineLeft  { to { width: 42%; } }
+@keyframes decoLineRight { to { width: 42%; } }
 
 /* Eyebrow tag */
 .hero-tag {
@@ -193,33 +215,72 @@ nav.scrolled {
   font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase; color: var(--gold);
   margin-bottom: 1.5rem;
-  animation: fadeSlideUp 0.8s ease 0.2s both;
+  /* slides in from top */
+  animation: slideFromTop 0.7s cubic-bezier(0.22,1,0.36,1) 0.3s both;
 }
+@keyframes slideFromTop {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .hero-tag .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
 
+/* Headline — each word/line slides in from a different angle */
 .hero-headline {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(3.5rem, 7vw, 6.5rem);
   font-weight: 900; line-height: 0.92;
   letter-spacing: -1px;
-  animation: fadeSlideUp 0.8s ease 0.4s both;
+  overflow: hidden;
 }
-.hero-headline .line1 { display: block; color: var(--white); }
-.hero-headline .line2 { display: block; color: var(--gold); -webkit-text-stroke: 0; }
-.hero-headline .line3 { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.35); }
+
+.hero-headline .line1 {
+  display: block; color: var(--white);
+  animation: slideFromLeft 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s both;
+}
+.hero-headline .line2 {
+  display: block; color: var(--gold);
+  animation: slideFromRight 0.8s cubic-bezier(0.22,1,0.36,1) 0.7s both;
+}
+.hero-headline .line3 {
+  display: block; color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.35);
+  animation: slideFromLeft 0.8s cubic-bezier(0.22,1,0.36,1) 0.9s both;
+}
+
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-80px) skewX(-6deg); }
+  to   { opacity: 1; transform: translateX(0) skewX(0deg); }
+}
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(80px) skewX(6deg); }
+  to   { opacity: 1; transform: translateX(0) skewX(0deg); }
+}
+
+/* Gold underline accent that draws itself under line2 */
+.headline-accent-line {
+  display: block;
+  width: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--red));
+  margin: 0.4rem auto 0;
+  animation: drawLine 0.6s ease 1.5s forwards;
+}
+@keyframes drawLine { to { width: 180px; } }
 
 .hero-sub {
   color: var(--text-muted); font-size: 1.05rem;
   line-height: 1.65; margin: 1.5rem 0 2rem;
-  max-width: 480px;
-  animation: fadeSlideUp 0.8s ease 0.6s both;
+  max-width: 560px;
+  animation: fadeSlideUp 0.8s ease 1.1s both;
 }
 
 .hero-actions {
   display: flex; gap: 1rem; flex-wrap: wrap;
-  animation: fadeSlideUp 0.8s ease 0.8s both;
+  justify-content: center;
+  animation: fadeSlideUp 0.8s ease 1.3s both;
 }
+
 .btn-primary-hero {
   background: var(--gold); color: var(--dark);
   border: none; padding: 0.9rem 2rem;
@@ -250,48 +311,6 @@ nav.scrolled {
 }
 .btn-outline-hero:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-/* Hero right — animated stats glass panel */
-.hero-right { animation: fadeSlideUp 1s ease 0.5s both; }
-
-.hero-stats-panel {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 4px;
-  padding: 2rem;
-  position: relative; overflow: hidden;
-}
-.hero-stats-panel::before {
-  content: ''; position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--red), var(--blue-bright));
-}
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.stat-item { text-align: center; padding: 1rem; position: relative; }
-.stat-item::after {
-  content: ''; position: absolute; bottom: 0; left: 50%;
-  transform: translateX(-50%); width: 30px; height: 1px;
-  background: var(--gold); opacity: 0.4;
-}
-.stat-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 2.8rem; font-weight: 900; line-height: 1;
-  color: var(--gold);
-}
-.stat-label { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
-
-.compliance-strip {
-  margin-top: 1.5rem; display: flex; gap: 0.8rem; flex-wrap: wrap;
-}
-.comp-badge {
-  background: rgba(245,184,0,0.08); border: 1px solid rgba(245,184,0,0.2);
-  border-radius: 2px; padding: 0.4rem 0.7rem;
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: rgba(245,184,0,0.8);
-  display: flex; align-items: center; gap: 0.4rem;
-}
-.comp-badge i { color: var(--gold); font-size: 0.7rem; }
-
 /* Scroll indicator */
 .scroll-indicator {
   position: absolute; bottom: 2.5rem; left: 50%;
@@ -304,7 +323,7 @@ nav.scrolled {
   background: linear-gradient(to bottom, rgba(245,184,0,0.8), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
-@keyframes scrollPulse { 0%,100% { opacity: 0.3; scaleY(0.5); } 50% { opacity: 1; } }
+@keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: scaleY(0.5); } 50% { opacity: 1; } }
 .scroll-text { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,184,0,0.5); }
 
 @keyframes fadeSlideUp {
@@ -340,7 +359,7 @@ section { padding: 7rem 0; }
   content: '';
   position: absolute; top: 0; right: 0; bottom: 0;
   width: 50%;
-  background: url('https://images.unsplash.com/photo-1464618663641-bbdd760ae84a?auto=format&fit=crop&w=1200&q=80') center/cover;
+  background: url('./assets/s1.png') center/cover;
   opacity: 0.08;
 }
 
@@ -406,7 +425,7 @@ section { padding: 7rem 0; }
 .services-section::before {
   content: '';
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=2000&q=80') center/cover fixed;
+  background: url('./assets/s2.png') center/cover fixed;
   opacity: 0.07;
 }
 
@@ -556,7 +575,7 @@ section { padding: 7rem 0; }
 }
 .banner-bg {
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80') center/cover fixed;
+  background: url('./assets/s3.png') center/cover fixed;
   filter: brightness(0.3) contrast(1.1);
 }
 .banner-overlay {
@@ -746,8 +765,7 @@ footer {
   <a href="#" class="nav-logo"><img src="assets/Lerulenglogo.png" style="width:150px; height:150px;" alt="LERULENG MINING"></a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="impact.html">Impact</a></li>
+    <li><a href="services.html">Fleet</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">Get a Quote</a>
@@ -756,7 +774,7 @@ footer {
 <!-- HERO -->
 <section class="hero" id="home">
   <video id="heroVideo" autoplay muted loop playsinline>
-    <source src="assets/leruleng_mining_servicesvid.mp4" type="video/mp4">
+    <source src="assets/mine-workers-operating-heavy-machinery-for-road-co (1).mp4" type="video/mp4">
     <source src="https://assets.mixkit.co/videos/preview/mixkit-excavation-machinery-working-on-earth-mounds-40893-large.mp4" type="video/mp4">
   </video>
 
@@ -767,48 +785,29 @@ footer {
   <!-- Particles -->
   <div class="particles" id="particles"></div>
 
-  <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-tag"><span class="dot"></span> Limpopo's Premier Earthmoving Partner</div>
-      <h1 class="hero-headline">
-        <span class="line1">MOVING</span>
-        <span class="line2">THE EARTH</span>
-        <span class="line3">FORWARD</span>
-      </h1>
-      <p class="hero-sub">Leruleng Mining Services delivers certified earthmoving excellence to Valterra Mogalakwena Mine and contractors — modern fleet, SHEQ-compliant operations, community-rooted.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary-hero"><i class="fas fa-hard-hat"></i> Request a Quote</a>
-        <a href="#equipment" class="btn-outline-hero"><i class="fas fa-tractor"></i> View Fleet</a>
-      </div>
-    </div>
+  <!-- Decorative slide-in lines -->
+  <div class="hero-deco-lines">
+    <div class="deco-line-left"></div>
+    <div class="deco-line-right"></div>
+  </div>
 
-    <div class="hero-right">
-      <div class="hero-stats-panel">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-num" data-target="4">0</div>
-            <div class="stat-label">Equipment Units</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num" data-suffix="T"><span data-target="60">0</span>T</div>
-            <div class="stat-label">Max Excavator Class</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num" data-target="24">0</div>
-            <div class="stat-label">Hour Response</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">100<span style="font-size:1.5rem">%</span></div>
-            <div class="stat-label">SHEQ Compliant</div>
-          </div>
-        </div>
-        <div class="compliance-strip">
-          <div class="comp-badge"><i class="fas fa-check-circle"></i> Certified Operators</div>
-          <div class="comp-badge"><i class="fas fa-shield-alt"></i> SHEQ Aligned</div>
-          <div class="comp-badge"><i class="fas fa-map-marker-alt"></i> Mapela Based</div>
-          <div class="comp-badge"><i class="fas fa-calendar-check"></i> Reg. Nov 2025</div>
-        </div>
-      </div>
+  <div class="hero-content">
+    <!--<div >
+      <span class="dot"></span> Limpopo's Premier Earthmoving Partner
+    </div>-->
+
+    <h1 class="hero-headline">
+      <span class="line1">MOVING</span>
+      <span class="line2">THE EARTH</span>
+      <span class="headline-accent-line"></span>
+      <span class="line3">FORWARD</span>
+    </h1>
+
+    <p class="hero-sub">Leruleng Mining Services delivers certified earthmoving excellence to Valterra Mogalakwena Mine and contractors — modern fleet, SHEQ-compliant operations, community-rooted.</p>
+
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary-hero"><i class="fas fa-hard-hat"></i> Request a Quote</a>
+      <a href="services.html" class="btn-outline-hero"><i class="fas fa-tractor"></i> View Fleet</a>
     </div>
   </div>
 
@@ -1066,32 +1065,39 @@ footer {
           </li>
         </ul>
         <div class="contact-actions">
-          <a href="#" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-          <a href="#" class="btn-quote"><i class="fas fa-file-contract"></i> Download Profile</a>
+          <a href="https://wa.me/27738172730?text=Hello%20I%20would%20like%20to%20enquire" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
         </div>
       </div>
 
       <div class="reveal reveal-delay-2">
         <div class="form-card">
           <h3>Request a Hire Package</h3>
-          <form id="contactForm">
+          <!-- FormSubmit.co Integration - sends to kmngomezulu82@gmail.com -->
+          <form id="contactForm" action="https://formsubmit.co/kmngomezulu82@gmail.com" method="POST" enctype="multipart/form-data">
+            <!-- FormSubmit.co configuration -->
+            <input type="hidden" name="_subject" value="Leruleng Mining - New Hire Inquiry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_replyto" value="email">
+            <input type="hidden" name="_next" value="https://lerulengmining.co.za/thank-you.html">
+            
             <div class="form-row">
               <div class="form-group">
                 <label>Full Name</label>
-                <input type="text" class="form-control" placeholder="Your name" required>
+                <input type="text" name="Full Name" class="form-control" placeholder="Your name" required>
               </div>
               <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" class="form-control" placeholder="you@company.com" required>
+                <input type="email" name="Email" class="form-control" placeholder="you@company.com" required>
               </div>
             </div>
             <div class="form-group">
               <label>Company / Organization</label>
-              <input type="text" class="form-control" placeholder="Valterra / Contractor name">
+              <input type="text" name="Company Name" class="form-control" placeholder="Valterra / Contractor name">
             </div>
             <div class="form-group">
               <label>Equipment Interest</label>
-              <select class="form-control">
+              <select name="Equipment Interest" class="form-control">
                 <option value="">Select equipment...</option>
                 <option>60-ton Excavator</option>
                 <option>20-ton Motor Grader</option>
@@ -1102,7 +1108,7 @@ footer {
             </div>
             <div class="form-group">
               <label>Hire Period</label>
-              <select class="form-control">
+              <select name="Hire Period" class="form-control">
                 <option value="">Select hire type...</option>
                 <option>Hourly hire</option>
                 <option>Daily hire</option>
@@ -1112,7 +1118,7 @@ footer {
             </div>
             <div class="form-group">
               <label>Project Details</label>
-              <textarea class="form-control" rows="3" placeholder="Tell us about your project scope and timeline..."></textarea>
+              <textarea name="Project Details" class="form-control" rows="3" placeholder="Tell us about your project scope and timeline..."></textarea>
             </div>
             <button type="submit" class="form-submit">Send Inquiry →</button>
             <p class="form-note"><i class="fas fa-clock"></i> Response within 24 hours · Hourly, daily, or monthly contracts</p>
@@ -1133,16 +1139,14 @@ footer {
         <div class="footer-socials">
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
       <div>
         <div class="footer-col-title">Quick Links</div>
         <ul class="footer-links">
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#equipment">Equipment Fleet</a></li>
-          <li><a href="#impact">Social Impact</a></li>
-          <li><a href="#contact">Contact & Hire</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Equipment Fleet</a></li>
+          <li><a href="contact.html">Contact & Hire</a></li>
         </ul>
       </div>
       <div>
@@ -1158,12 +1162,8 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Leruleng Mining Services (Pty) Ltd · Empowering local mining excellence</div>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">POPIA Compliance</a>
-      </div>
+      <div class="footer-copy">© 2026 Leruleng Mining Services (Pty) Ltd · Empowering local mining excellence</div>
+      <div class="footer-legal"></div>
     </div>
   </div>
 </footer>
@@ -1256,17 +1256,18 @@ const counterObs = new IntersectionObserver(entries => {
 const statPanel = document.querySelector('.hero-stats-panel');
 if (statPanel) counterObs.observe(statPanel);
 
-// Form
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+// Form visual feedback (FormSubmit handles actual sending)
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', function(e) {
   const btn = this.querySelector('.form-submit');
-  btn.textContent = '✓ Inquiry Sent — We\'ll be in touch within 24hrs';
-  btn.style.background = '#25D366';
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Inquiry...';
+  btn.disabled = true;
+  
   setTimeout(() => {
-    btn.textContent = 'Send Inquiry →';
-    btn.style.background = '';
-    this.reset();
-  }, 4000);
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }, 3000);
 });
 
 // Hero video fallback
